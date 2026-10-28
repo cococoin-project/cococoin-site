@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover CocoCoin (COCO), a digital token with a supply of 100,000,000 COCO.">
+  <title>CocoCoin (COCO)</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #080d0a;
+      color: #f2f7f3;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 22px 8%;
+      border-bottom: 1px solid #20352a;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .logo span,
+    .tag,
+    h1 span {
+      color: #8df56a;
+    }
+
+    select {
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid #426348;
+      background: #14221a;
+      color: white;
+      cursor: pointer;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 75px auto;
+      padding: 0 24px;
+      text-align: center;
+    }
+
+    .tag {
+      letter-spacing: 3px;
+      font-size: 13px;
+    }
+
+    h1 {
+      font-size: clamp(36px, 6vw, 62px);
+      line-height: 1.15;
+    }
+
+    p {
+      color: #b4c3b8;
+      line-height: 1.7;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 14px 22px;
+      background: #8df56a;
+      color: #10200f;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 50px;
+    }
+
+    .stat {
+      background: #111a14;
+      border: 1px solid #263c2c;
+      border-radius: 14px;
+      padding: 24px 16px;
+    }
+
+    .stat strong {
+      display: block;
+      color: #8df56a;
+      font-size: 22px;
+      margin-top: 12px;
+    }
+
+    .about {
+      margin-top: 22px;
+      text-align: left;
+    }
+
+    .about h2 {
+      color: #8df56a;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: #819087;
+      font-size: 13px;
+      border-top: 1px solid #20352a;
+    }
+
+    @media (max-width: 500px) {
+      header {
+        padding: 18px;
+      }
+
+      main {
+        margin-top: 50px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">Coco<span>Coin</span></div>
+
+    <select id="language" aria-label="Language">
+      <option value="en">English</option>
+      <option value="ru">Русский</option>
+      <option value="uk">Українська</option>
+    </select>
+  </header>
+
+  <main>
+    <div class="tag">DIGITAL TOKEN · COCO</div>
+
+    <h1 id="headline"></h1>
+
+    <p id="description"></p>
+
+    <a class="button" href="#about" id="cta"></a>
+
+    <div class="stats" id="about">
+      <div class="stat">
+        <span id="nameLabel"></span>
+        <strong>CocoCoin</strong>
+      </div>
+
+      <div class="stat">
+        <span id="supplyLabel"></span>
+        <strong>100,000,000 COCO</strong>
+      </div>
+    </div>
+
+    <p id="notice"></p>
+
+    <section class="stat about">
+      <h2 id="aboutTitle"></h2>
+      <p id="aboutText"></p>
+    </section>
+  </main>
+
+  <footer>© CocoCoin · COCO</footer>
+
+  <script>
+    const translations = {
+      en: {
+        headline: "A cryptocurrency looking to the future.",
+        description: "Meet CocoCoin — a digital token developing one step at a time.",
+        cta: "Explore COCO",
+        name: "Token name",
+        supply: "Maximum token supply",
+        notice: "Trading has not launched yet. This is an informational project website.",
+        aboutTitle: "About CocoCoin",
+        aboutText: "CocoCoin is a digital token with a supply of 100,000,000 COCO. This website shares information about the project. Trading is not live yet."
+      },
+
+      ru: {
+        headline: "Криптовалюта с взглядом в будущее.",
+        description: "Знакомьтесь с CocoCoin — цифровым токеном, который развивается шаг за шагом.",
+        cta: "Узнать о COCO",
+        name: "Название токена",
+        supply: "Максимальный выпуск токена",
+        notice: "Торговля ещё не запущена. Это информационный сайт проекта.",
+        aboutTitle: "О CocoCoin",
+        aboutText: "CocoCoin — цифровой токен с выпуском 100 000 000 COCO. На этом сайте публикуется информация о проекте. Торговля пока не запущена."
+      },
+
+      uk: {
+        headline: "Криптовалюта з поглядом у майбутнє.",
+        description: "Знайомтеся з CocoCoin — цифровим токеном, який розвивається крок за кроком.",
+        cta: "Дізнатися про COCO",
+        name: "Назва токена",
+        supply: "Максимальний випуск токена",
+        notice: "Торгівлю ще не запущено. Це інформаційний сайт проєкту.",
+        aboutTitle: "Про CocoCoin",
+        aboutText: "CocoCoin — цифровий токен із випуском 100 000 000 COCO. На цьому сайті публікується інформація про проєкт. Торгівлю ще не запущено."
+      }
+    };
+
+    const languageSelector = document.getElementById("language");
+
+    function setLanguage(language) {
+      const t = translations[language] || translations.en;
+
+      document.documentElement.lang = language;
+      document.getElementById("headline").textContent = t.headline;
+      document.getElementById("description").textContent = t.description;
+      document.getElementById("cta").textContent = t.cta;
+      document.getElementById("nameLabel").textContent = t.name;
+      document.getElementById("supplyLabel").textContent = t.supply;
+      document.getElementById("notice").textContent = t.notice;
+      document.getElementById("aboutTitle").textContent = t.aboutTitle;
+      document.getElementById("aboutText").textContent = t.aboutText;
+    }
+
+    languageSelector.addEventListener("change", function () {
+      setLanguage(this.value);
+    });
+
+    setLanguage("en");
+  </script>
+</body>
+</html>
